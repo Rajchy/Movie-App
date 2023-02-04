@@ -1,5 +1,21 @@
-<div class="container">	
+<input class="search" type="text" [ngModel]="filterKey" (ngModelChange)="onFilterKeyChange($event)" placeholder="Search....">
+<div class="container" *ngIf="!filteredItems?.length">	
 	<div class="movie-card" *ngFor="let movie of movies?.results | paginate: { itemsPerPage: 5, currentPage: p }">
+		<div class="movie-content">
+			<div class="movie-content-header">
+				<a href="#">
+					<h3 class="movie-title">{{movie?.title}}</h3>
+				</a>
+				<div class="imax-logo"> {{movie?.genres}}</div>
+			</div>
+			<div class="movie-info">
+				<p>{{movie?.description}}</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container" *ngIf="filteredItems?.length">
+	<div class="movie-card" *ngFor="let movie of filteredItems | paginate: { itemsPerPage: 5, currentPage: p }">
 		<div class="movie-content">
 			<div class="movie-content-header">
 				<a href="#">
