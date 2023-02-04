@@ -1,0 +1,23 @@
+<div class="header">
+  <img style="width: 75px;" src="https://w7.pngwing.com/pngs/400/350/png-transparent-colorflow-film-computer-icons-directory-mymovies-it-movies-miscellaneous-text-trademark.png" alt="">
+  <!-- <a href="#default" class="logo">Movies App</a> -->
+  <div class="header-right">
+    <a
+        class="active"
+        *ngIf="!_authService.loggedIn()"
+        routerLink="/login"
+        routerLinkActive="active"
+        >Login</a
+      >
+      <a
+        class=""
+        style="cursor: pointer"
+        *ngIf="_authService.loggedIn()"
+        (click)="_authService.logoutUser();myFunction()"
+        >Logout</a
+      >
+  </div>
+</div>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
